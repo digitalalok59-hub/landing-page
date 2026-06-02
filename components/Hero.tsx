@@ -32,7 +32,7 @@ export default function Hero() {
               Get a Customized Marketing Plan to Grow Your Business Online
             </h1>
             <p className="mt-6 max-w-3xl text-lg font-semibold leading-8 text-brand-blue sm:text-xl sm:leading-9">
-              Book a free 1:1 digital marketing consultation. We will look at
+              Book a Free 1:1 Digital Marketing Consultation. We will look at
               your business and show you what needs to improve.
             </p>
             <p className="mt-6 max-w-2xl text-sm leading-6 text-slate-500 sm:text-base sm:leading-7">
