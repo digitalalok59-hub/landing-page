@@ -1,99 +1,28 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { LockKeyhole } from "lucide-react";
+import Script from "next/script";
+import FlodeskSuccessRedirect from "./FlodeskSuccessRedirect";
+
+function getFlodeskEmbed() {
+  try {
+    return readFileSync(join(process.cwd(), "public", "flodesk-embed.html"), "utf8");
+  } catch {
+    return "";
+  }
+}
 
 export default function CTAForm() {
-  const router = useRouter();
-  const embedRef = useRef<HTMLDivElement>(null);
-  const [loadError, setLoadError] = useState(false);
-
-  useEffect(() => {
-    let isMounted = true;
-    let redirectTimer: number | undefined;
-    let observer: MutationObserver | undefined;
-
-    async function loadFlodeskEmbed() {
-      try {
-        document
-          .querySelectorAll('[data-local-flodesk-script="true"]')
-          .forEach((script) => script.remove());
-
-        const response = await fetch("/flodesk-embed.html", {
-          cache: "no-store"
-        });
-
-        if (!response.ok) {
-          throw new Error("Flodesk embed could not be loaded.");
-        }
-
-        const html = await response.text();
-        if (!isMounted || !embedRef.current) return;
-
-        embedRef.current.innerHTML = html;
-
-        const scripts = Array.from(embedRef.current.querySelectorAll("script"));
-        scripts.forEach((oldScript) => {
-          const script = document.createElement("script");
-
-          Array.from(oldScript.attributes).forEach((attribute) => {
-            script.setAttribute(attribute.name, attribute.value);
-          });
-
-          script.setAttribute("data-local-flodesk-script", "true");
-          script.textContent = oldScript.textContent;
-          document.body.appendChild(script);
-          oldScript.remove();
-        });
-
-        const flodeskRoot = embedRef.current.querySelector(
-          '[data-ff-el="root"]'
-        );
-
-        if (!flodeskRoot) return;
-
-        const redirectAfterFlodeskSuccess = () => {
-          if (redirectTimer) return;
-
-          redirectTimer = window.setTimeout(() => {
-            router.push("/thanks");
-          }, 1800);
-        };
-
-        observer = new MutationObserver(() => {
-          const stage = flodeskRoot.getAttribute("data-ff-stage");
-          const successBlock = embedRef.current?.querySelector(
-            '[data-ff-el="success"]'
-          );
-          const successVisible =
-            successBlock &&
-            window.getComputedStyle(successBlock).display !== "none";
-
-          if (stage === "success" || successVisible) {
-            redirectAfterFlodeskSuccess();
-          }
-        });
-
-        observer.observe(flodeskRoot, {
-          attributes: true,
-          attributeFilter: ["data-ff-stage"],
-          childList: true,
-          subtree: true
-        });
-      } catch {
-        if (isMounted) setLoadError(true);
-      }
-    }
-
-    loadFlodeskEmbed();
-
-    return () => {
-      isMounted = false;
-      observer?.disconnect();
-      if (redirectTimer) window.clearTimeout(redirectTimer);
-    };
-  }, [router]);
+  const flodeskEmbed = getFlodeskEmbed();
+  const flodeskScripts = Array.from(
+    flodeskEmbed.matchAll(/<script>([\s\S]*?)<\/script>/g)
+  )
+    .map((match) => match[1])
+    .join("\n");
+  const flodeskMarkup = flodeskEmbed.replace(
+    /<script>[\s\S]*?<\/script>/g,
+    ""
+  );
 
   return (
     <section id="book-call" className="scroll-mt-6 px-5 pb-20 sm:pb-24">
@@ -119,12 +48,25 @@ export default function CTAForm() {
         </div>
 
         <div className="rounded-[22px] border border-brand-line bg-white p-5 shadow-soft sm:p-8">
-          {loadError ? (
+          {flodeskEmbed ? (
+            <>
+              <div
+                className="flodesk-form-shell"
+                dangerouslySetInnerHTML={{ __html: flodeskMarkup }}
+              />
+              <Script
+                // The script contents come directly from the Flodesk embed.
+                id="flodesk-embed-script"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{ __html: flodeskScripts }}
+              />
+              <FlodeskSuccessRedirect />
+            </>
+          ) : (
             <p className="rounded-md bg-red-50 p-4 text-sm font-semibold text-red-700">
               The booking form could not load. Please refresh the page.
             </p>
-          ) : null}
-          <div ref={embedRef} className="flodesk-form-shell" />
+          )}
         </div>
       </div>
     </section>
