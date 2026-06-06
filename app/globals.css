@@ -35,3 +35,174 @@ textarea {
   background: #244bea;
   color: #ffffff;
 }
+
+.flodesk-form-shell [data-ff-el="root"].ff-6a1d84f9bd894dbe346975ec {
+  width: 100%;
+}
+
+.flodesk-form-shell
+  [data-ff-el="root"].ff-6a1d84f9bd894dbe346975ec
+  .ff-6a1d84f9bd894dbe346975ec__container {
+  max-width: 100%;
+  overflow: visible;
+  background: transparent;
+}
+
+.flodesk-form-shell
+  [data-ff-el="root"].ff-6a1d84f9bd894dbe346975ec
+  .ff-6a1d84f9bd894dbe346975ec__form {
+  padding: 0;
+  color: #101828;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  letter-spacing: 0;
+}
+
+.flodesk-form-shell
+  [data-ff-el="root"].ff-6a1d84f9bd894dbe346975ec
+  .ff-6a1d84f9bd894dbe346975ec__title {
+  color: #101828;
+  margin-bottom: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  line-height: 1.12;
+  text-align: left;
+  letter-spacing: 0;
+}
+
+.flodesk-form-shell
+  [data-ff-el="root"].ff-6a1d84f9bd894dbe346975ec
+  .ff-6a1d84f9bd894dbe346975ec__subtitle {
+  color: #64748b;
+  margin-bottom: 28px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  text-align: left;
+  letter-spacing: 0;
+}
+
+.flodesk-form-shell
+  [data-ff-el="root"].ff-6a1d84f9bd894dbe346975ec
+  .ff-6a1d84f9bd894dbe346975ec__fields {
+  display: grid;
+  gap: 18px 20px;
+  margin-bottom: 22px;
+}
+
+.flodesk-form-shell
+  [data-ff-el="root"].ff-6a1d84f9bd894dbe346975ec
+  .ff-6a1d84f9bd894dbe346975ec__field {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
+
+.flodesk-form-shell
+  [data-ff-el="root"].ff-6a1d84f9bd894dbe346975ec
+  .ff-6a1d84f9bd894dbe346975ec__control {
+  height: 56px;
+  border: 1px solid #d6e0f6;
+  border-radius: 12px;
+  padding: 16px 18px;
+  color: #101828;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  box-shadow: 0 1px 0 rgba(16, 24, 40, 0.02);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.flodesk-form-shell
+  [data-ff-el="root"].ff-6a1d84f9bd894dbe346975ec
+  .ff-6a1d84f9bd894dbe346975ec__control:focus {
+  border-color: #244bea;
+  box-shadow:
+    0 0 0 4px rgba(36, 75, 234, 0.1),
+    0 10px 24px rgba(36, 75, 234, 0.08);
+}
+
+.flodesk-form-shell
+  [data-ff-el="root"].ff-6a1d84f9bd894dbe346975ec
+  .ff-6a1d84f9bd894dbe346975ec__label {
+  padding: 16px 18px;
+  color: #64748b;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+.flodesk-form-shell
+  [data-ff-el="root"].ff-6a1d84f9bd894dbe346975ec
+  .ff-6a1d84f9bd894dbe346975ec__button {
+  min-height: 62px;
+  border: 1px solid #244bea;
+  border-radius: 12px;
+  background: #244bea;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+  box-shadow: 0 22px 55px rgba(36, 75, 234, 0.22);
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.flodesk-form-shell
+  [data-ff-el="root"].ff-6a1d84f9bd894dbe346975ec
+  .ff-6a1d84f9bd894dbe346975ec__button:hover {
+  background: #1d3fc4;
+  box-shadow: 0 26px 65px rgba(36, 75, 234, 0.28);
+  transform: translateY(-1px);
+}
+
+.flodesk-form-shell
+  [data-ff-el="root"].ff-6a1d84f9bd894dbe346975ec
+  .ff-6a1d84f9bd894dbe346975ec__success-message {
+  color: #101828;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+@media (min-width: 640px) {
+  .flodesk-form-shell
+    [data-ff-el="root"].ff-6a1d84f9bd894dbe346975ec
+    .ff-6a1d84f9bd894dbe346975ec__fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .flodesk-form-shell
+    [data-ff-el="root"].ff-6a1d84f9bd894dbe346975ec
+    .ff-6a1d84f9bd894dbe346975ec__field:nth-last-child(2) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .flodesk-form-shell
+    [data-ff-el="root"].ff-6a1d84f9bd894dbe346975ec
+    .ff-6a1d84f9bd894dbe346975ec__form {
+    padding: 0;
+  }
+
+  .flodesk-form-shell
+    [data-ff-el="root"].ff-6a1d84f9bd894dbe346975ec
+    .ff-6a1d84f9bd894dbe346975ec__title {
+    font-size: 25px;
+  }
+
+  .flodesk-form-shell
+    [data-ff-el="root"].ff-6a1d84f9bd894dbe346975ec
+    .ff-6a1d84f9bd894dbe346975ec__button {
+    min-height: 58px;
+    font-size: 15px;
+    white-space: normal;
+  }
+}
