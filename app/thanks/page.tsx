@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MessageCircle, PlayCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
+import VimeoThankYouPlayer from "@/components/VimeoThankYouPlayer";
 
 export const metadata: Metadata = {
   title: "Thanks",
@@ -31,30 +32,17 @@ export default function ThanksPage() {
           what to do next.
         </p>
 
-        <div className="mt-10 aspect-video w-full max-w-3xl overflow-hidden rounded-lg border border-brand-line bg-brand-soft shadow-soft">
-          <div className="flex h-full flex-col items-center justify-center px-6 text-center">
-            <PlayCircle className="mb-4 text-brand-blue" size={48} aria-hidden="true" />
-            <p className="text-lg font-bold text-brand-ink">
-              Vimeo video will be added here
-            </p>
-            <p className="mt-2 max-w-md text-sm leading-6 text-slate-600">
-              Send the Vimeo video link and this box will become the embedded
-              video.
-            </p>
-          </div>
-        </div>
+        <VimeoThankYouPlayer />
 
-        <button
-          type="button"
-          disabled
-          className="mt-9 inline-flex min-h-14 cursor-not-allowed items-center justify-center gap-2 rounded-md bg-brand-blue px-7 text-base font-bold text-white opacity-60 shadow-soft"
+        <a
+          href="https://wa.me/9779841069311"
+          target="_blank"
+          rel="noreferrer"
+          className="mt-9 inline-flex min-h-14 items-center justify-center gap-2 rounded-md bg-brand-blue px-7 text-base font-bold text-white shadow-soft transition hover:bg-[#1d3fc4] focus:outline-none focus:ring-4 focus:ring-brand-blue/20"
         >
           <MessageCircle aria-hidden="true" size={20} />
           Chat with me on WhatsApp
-        </button>
-        <p className="mt-3 text-sm text-slate-500">
-          Send your WhatsApp chat link and this button will open WhatsApp.
-        </p>
+        </a>
       </section>
     </main>
   );
